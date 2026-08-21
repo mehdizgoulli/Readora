@@ -25,8 +25,7 @@ import java.util.stream.Collectors;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name= "user")
-@EntityListeners(AuditingEntityListener.class)
+@Table(name = "_user")
 public class User implements UserDetails, Principal {
 
     @Id
@@ -58,7 +57,9 @@ public class User implements UserDetails, Principal {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
+        return this.roles.stream()
+                .map(r -> new SimpleGrantedAuthority(r.getName()))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -91,7 +92,7 @@ public class User implements UserDetails, Principal {
         return enabled;
     }
 
-    private String fullName(){
+    public String fullName(){
         return firstname + " " + lastname;
     }
 }

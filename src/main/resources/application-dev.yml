@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/book_social_network
+    url: jdbc:postgresql://localhost:5433/readora_db
     username: username
     password: password
     driver-class-name: org.postgresql.Driver
@@ -16,21 +16,25 @@ spring:
   mail:
     host: localhost
     port: 1025
-    username: mehdi
-    password: mehdi
     properties:
       mail:
         smtp:
           trust: "*"
-        auth: true
+        auth: false
         starttls:
-          enable: true
-        connectiontimout: 5000
+          enable: false
+        connectiontimeout: 5000
         timeout: 3000
         writetimeout: 5000
 
-  application:
-    security:
-      jwt:
-        secret-key:
-          expiration:
+application:
+  security:
+    jwt:
+      secret-key: 7f3c9a2e8b1d4f6a0c5e7d9b3a8f2c1e6d4b7a9c0f3e5d8b1a6c9e2f4d7a0b
+      expiration: 86400000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
+
+server:
+  port: 8080

@@ -2,10 +2,7 @@ package com.mhz.readora.role;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mhz.readora.user.User;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,9 +20,9 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-// @Entity
-// @Table(name = "role")
-// @EntityListeners(AuditingEntityListener.class)
+@Entity
+@Table(name = "role")
+@EntityListeners(AuditingEntityListener.class)
 public class Role {
 
     @Id

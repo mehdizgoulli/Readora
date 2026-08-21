@@ -1,7 +1,7 @@
 services:
   postgres:
     container_name: postgres-sql-readora
-    image: postgres:latest
+    image: postgres
     environment:
       POSTGRES_USER: username
       POSTGRES_PASSWORD: password
